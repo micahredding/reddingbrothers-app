@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  summary: MyText
+  release: 2016-08-23 11:24:45
+  type: 
+  format: MyString
+  cover_url: MyString
+  itunes_url: MyString
+  amazon_url: MyString
+  bandcamp_url: MyString
+
+two:
+  title: MyString
+  summary: MyText
+  release: 2016-08-23 11:24:45
+  type: 
+  format: MyString
+  cover_url: MyString
+  itunes_url: MyString
+  amazon_url: MyString
+  bandcamp_url: MyString
