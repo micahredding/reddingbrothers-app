@@ -1,0 +1,51 @@
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Albums
+                    <small>for listening</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <% @releases.in_groups_of(@columns).each do |group| %>
+          <!-- Projects Row -->
+          <div class="row">
+            <% group.each do |release| %>
+              <div class="col-md-<%= 12 / @columns %> portfolio-item">
+                  <a href="<%= release_path(release) %>">
+                    <%= cl_image_tag(release.cover_url,
+                        :width => (1200/ @columns),
+                        :height => (1200/ @columns),
+                        :crop => :fill,
+                        :alt => release.title,
+                        :class => "img-responsive")
+                    %>
+                  </a>
+                  <h3>
+                      <a href="<%= release_path(release) %>"><%= release.title %></a>
+                  </h3>
+                  <p><%= teaser(release.summary) %></p>
+              </div>
+            <% end %>
+          </div>
+          <!-- /.row -->
+        <% end %>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->

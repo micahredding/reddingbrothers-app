@@ -1,0 +1,25 @@
+// Place all the styles related to the Releases controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.song-list-item {
+  font-size: 1.5em;
+  &:hover {
+    background-color: #FFF;
+  }
+  a {
+    color: #333;
+    display: inline-block;
+    padding: 2rem;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  a.play-button {
+    float: left;
+    padding: 2rem 3rem 2rem 2rem;
+  }
+  a.song-title {
+    display: block;
+  }
+}

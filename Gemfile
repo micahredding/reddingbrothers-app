@@ -34,6 +34,9 @@ gem 'rails_admin', '>= 1.0.0.rc'
 gem 'devise'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'bootstrap-sass'
+gem 'rails_layout'
+gem 'redcarpet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

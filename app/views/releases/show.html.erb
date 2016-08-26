@@ -1,0 +1,75 @@
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><%= @release.title %>
+                    <small><%= @release.release %></small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                <%= cl_image_tag(@release.cover_url,
+                    :width => 750,
+                    :height => 750,
+                    :crop => :fill,
+                    :alt => @release.title,
+                    :class => "img-responsive")
+                %>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Description</h3>
+                <p><%= @release.summary %></p>
+                <h3>Details</h3>
+                <ul>
+                    <li>Release Date: <%= @release.release %></li>
+                    <li>Release Type: <%= @release.kind %></li>
+                    <li>Format: <%= @release.format %></li>
+                    <li><%= link_to 'iTunes', @release.itunes_url %></li>
+                    <li><%= link_to 'Amazon', @release.amazon_url %></li>
+                    <li><%= link_to 'Bandcamp', @release.bandcamp_url %></li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Tracks</h3>
+            </div>
+
+            <div class="col-lg-12">
+                <% @release.tracks.each do |track| %>
+                    <div class="song-list-item col-lg-12">
+                        <%= link_to '', {class: 'play-button'} do %>
+                            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        <% end %>
+                        <%= link_to track.song.title, song_path(track.song), {class: 'song-title'} %></a>
+                    </div>
+                <% end %>
+            </div>
+            <!-- /.row -->
+        </div>
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
