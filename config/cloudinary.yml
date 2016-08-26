@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: micahredding
+  api_key: '641825444238836'
+  api_secret: o5m_V2_ET6t9PSoikHjxjLZfK2A
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: micahredding
+  api_key: '641825444238836'
+  api_secret: o5m_V2_ET6t9PSoikHjxjLZfK2A
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: micahredding
+  api_key: '641825444238836'
+  api_secret: o5m_V2_ET6t9PSoikHjxjLZfK2A
+  enhance_image_tag: true
+  static_image_support: false
