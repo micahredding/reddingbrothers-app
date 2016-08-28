@@ -1,6 +1,6 @@
 class ReleasesController < ApplicationController
   def index
-    @releases = Release.order( :cover_url => :desc, :kind => :asc)
+    @releases = Release.order(:cover_url => :desc, :kind => :asc)
     @columns = 3
   end
 

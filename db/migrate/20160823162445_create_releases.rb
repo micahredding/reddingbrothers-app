@@ -10,7 +10,7 @@ class CreateReleases < ActiveRecord::Migration[5.0]
       t.string :itunes_url
       t.string :amazon_url
       t.string :bandcamp_url
-
+      t.string :slug
       t.timestamps
     end
   end

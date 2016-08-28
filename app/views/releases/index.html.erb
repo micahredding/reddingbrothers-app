@@ -11,7 +11,7 @@
         </div>
         <!-- /.row -->
 
-        <% @releases.in_groups_of(@columns).each do |group| %>
+        <% @releases.in_groups_of(@columns, false).each do |group| %>
           <!-- Projects Row -->
           <div class="row">
             <% group.each do |release| %>

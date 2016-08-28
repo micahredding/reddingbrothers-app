@@ -9,6 +9,7 @@ class CreateSongs < ActiveRecord::Migration[5.0]
       t.datetime :written
       t.datetime :recorded
       t.boolean :published, :default => true
+      t.string :slug
       t.timestamps
     end
   end

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160823163015) do
     t.string   "itunes_url"
     t.string   "amazon_url"
     t.string   "bandcamp_url"
+    t.string   "slug"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160823163015) do
     t.datetime "written"
     t.datetime "recorded"
     t.boolean  "published",  default: true
+    t.string   "slug"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
