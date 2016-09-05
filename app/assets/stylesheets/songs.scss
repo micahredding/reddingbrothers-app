@@ -8,3 +8,31 @@ div.audio-player {
 div.lyrics {
   margin: 3em 0;
 }
+
+
+.lyrics {
+  .line-break {
+    display: block;
+  }
+
+  .chord {
+    color: blue;
+    font-size: 0.7em;
+    line-height: 2em;
+    vertical-align: top;
+  }
+
+  &.above-the-line {
+    .line-break {
+      padding-top: 0.7em;
+      position: relative;
+    }
+
+    .chord {
+      line-height: 1.3em;
+      position: absolute;
+      top: 0em;
+    }
+  }
+}
+
