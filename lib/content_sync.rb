@@ -11,7 +11,7 @@ module ContentSync
   def self.process_directory(directory, content_key='content', slug_key='slug', &block)
     Dir["#{ROOT_PATH}/#{directory}/*.yml"].each do |file|
       info = self.parse_yaml(File.read(file), content_key)
-      info[slug_key] = File.basename(file, ".*") unless info[slug_key].present?
+      info[slug_key] = File.basename(file, ".*").gsub('_','-') unless info[slug_key].present?
       yield(file, info)
     end
   end
@@ -22,29 +22,31 @@ module ContentSync
     end
   end
 
-  def self.find_song(name)
-    slug = name.parameterize('_')
-    Song.where('title LIKE ?', "%#{name}%").take || Song.where('slug LIKE ?', "%#{slug}%").take
+  def self.load_all_releases
+    self.process_directory('releases', 'summary', 'slug') do |file, info|
+      tracks = info.delete('tracks')
+      release = Release.create(info)
+      info['tracks'] = self.load_these_tracks(tracks, release)
+    end
   end
 
-  def self.load_these_tracks(tracks)
+
+  def self.find_song(name)
+    slug = name.parameterize('-')
+    Song.where('slug LIKE ?', "#{slug}%").take || Song.where('title LIKE ?', "#{name}%").take
+  end
+
+  def self.load_these_tracks(tracks, release=nil)
     tracks.map!.with_index { |song, index|
       {
         position: index,
-        song: self.find_song(song)
+        title: song,
+        song: self.find_song(song),
+        release: release,
       }
     }
     Track.create(tracks)
   end
-
-  def self.load_all_releases
-    self.process_directory('releases', 'summary', 'slug') do |file, info|
-      tracks = info.delete('tracks')
-      info['tracks'] = self.load_these_tracks(tracks)
-      Release.create(info)
-    end
-  end
-
 
   # def self.load_yaml(directory, filename, content_key='content')
   #   fullpath = File.join(ROOT_PATH, directory, "#{filename}.yml")
