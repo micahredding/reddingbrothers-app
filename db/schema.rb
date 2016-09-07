@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20160823163015) do
     t.integer  "release_id"
     t.integer  "song_id"
     t.integer  "position"
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["release_id"], name: "index_tracks_on_release_id"

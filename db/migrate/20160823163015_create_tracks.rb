@@ -4,6 +4,7 @@ class CreateTracks < ActiveRecord::Migration[5.0]
       t.references :release, foreign_key: true
       t.references :song, foreign_key: true
       t.integer :position
+      t.string :title
 
       t.timestamps
     end
