@@ -1,29 +1,36 @@
 module ApplicationHelper
   class ChordsAndLyrics < Redcarpet::Render::HTML
+    CHORD_NAME           = "[CDEFGABcdefgab](#|##|b|bb)?(m|maj7|maj|min7|min|sus2)?"
+    CHORD_NAME_MULTIPLE  = "(#{CHORD_NAME}([ ])?)+"
+    SONG_PARTS           = "CHORUS"
+
+    CHORD_REGEX          = /(?<chord>\[#{CHORD_NAME_MULTIPLE}\])/
+    NOTATION_REGEX       = /(?<chord>\[#{SONG_PARTS}\])/
+    BRACKET_REGEX        = /(?<chord>\[.*?\])/
+
     def initialize(options={})
       super options.merge(:hard_wrap => true)
     end
 
     def chord_markup(text)
-      chord_name = "[CDEFGAB](#|##|b|bb)?(m|maj7|maj|min7|min|sus2)?"
-      chord_name_multiple = "(#{chord_name}([ ])?)+"
-
-      chord_regex = /(?<chord>\[#{chord_name}\])/
-      chord_multiple_regex = /(?<chord>\[#{chord_name_multiple}\])/
-
-      bracket_regex = /(?<chord>\[.*?\])/
-      text.gsub(chord_multiple_regex, '<span class="chord">\k<chord></span>')
+      text.gsub!(CHORD_REGEX,    '<span class="chord">\k<chord></span>')
+      text.gsub!(NOTATION_REGEX, '<span class="notation">\k<chord></span>')
+      text
     end
 
     def hard_wrap(text)
-      # text.gsub(/(.*\n)/, '<span class="line-break">\1</span>' + "\n")
-      text.split(/\n/).map { |t| '<span class="line-break">' + t + '</span>' }.join()
+      lines = text.split(/\n/).map do |t|
+        classes = 'line-break'
+        classes = classes + ' with-chords' if CHORD_REGEX =~ t
+        classes = classes + ' with-notation' if NOTATION_REGEX =~ t
+        "<span class='#{classes}'>#{t}</span>"
+      end
+      lines.join()
     end
 
     def paragraph(t)
-      # a = hard_wrap(chord_markup(t))
-      b = chord_markup(hard_wrap(t))
-      text = b
+      c = chord_markup(t)
+      text = hard_wrap(c)
       "<p>#{text}</p>"
     end
   end
