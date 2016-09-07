@@ -49,10 +49,17 @@
             <div class="col-lg-12">
                 <% @release.tracks.each do |track| %>
                     <div class="song-list-item col-lg-12">
-                        <%= link_to '', {class: 'play-button'} do %>
-                            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        <% if track.song.present? %>
+                            <a href="" class="play-button">
+                                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                            </a>
+                            <%= link_to track.title, track.song, {class: 'song-title'} %>
+                        <% else %>
+                            <a class="play-button disabled">
+                                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                            </a>
+                            <span class="song-title"><%= track.title %></span>
                         <% end %>
-                        <%= link_to_if track.title.present?, track.title, track.song, {class: 'song-title'} %>
                     </div>
                 <% end %>
             </div>

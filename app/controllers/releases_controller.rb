@@ -5,6 +5,6 @@ class ReleasesController < ApplicationController
   end
 
   def show
-    @release = Release.find(params[:id])
+    @release = Release.find_by(:slug => params[:id]) || Release.find(params[:id])
   end
 end

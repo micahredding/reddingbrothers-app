@@ -2,8 +2,7 @@ class Song < ApplicationRecord
   has_many :tracks
   has_many :releases, :through => :tracks
 
-  def slug
-    return self.slug if self.slug.present?
-    self.title.parameterize('_')
+  def to_param
+    self.slug.present? ? self.slug : self.title.parameterize('-')
   end
 end
