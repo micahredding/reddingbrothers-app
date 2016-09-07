@@ -7,19 +7,22 @@
   &:hover {
     background-color: #FFF;
   }
-  a {
+  a, span {
     color: #333;
     display: inline-block;
-    padding: 2rem;
     &:hover {
       text-decoration: none;
     }
   }
-  a.play-button {
+  .play-button {
     float: left;
     padding: 2rem 3rem 2rem 2rem;
+    &.disabled .glyphicon {
+      color: #CCC;
+    }
   }
-  a.song-title {
+  .song-title {
     display: block;
+    padding: 2rem;
   }
 }
