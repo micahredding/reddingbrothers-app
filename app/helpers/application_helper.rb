@@ -1,6 +1,6 @@
 module ApplicationHelper
   class ChordsAndLyrics < Redcarpet::Render::HTML
-    CHORD_NAME           = "[CDEFGABcdefgab](#|##|b|bb)?(m|maj7|maj|min7|min|sus2)?"
+    CHORD_NAME           = "[CDEFGABcdefgab](#|##|b|bb|[0-9])?(m|maj7|maj|min7|min|sus2)?"
     CHORD_NAME_MULTIPLE  = "(#{CHORD_NAME}([ ])?)+"
     SONG_PARTS           = "CHORUS"
 
