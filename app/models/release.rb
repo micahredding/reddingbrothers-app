@@ -28,30 +28,4 @@ class Release < ApplicationRecord
     info.select! {|x| Release.attribute_names.index(x)}
     self.update_attributes(info)
   end
-
-  # def self.new_release(name)
-  #   slug = name.parameterize('_')
-  #   info = ContentSync::find_remote_release(slug)
-  #   return nil unless info.present?
-  #   Release.new(info)
-  # end
-
-  # def self.create_release(name)
-  #   release = self.new_release(name)
-  #   release.save if release.present?
-  #   release
-  # end
-
-  # def self.find_release(name)
-  #   slug = name.parameterize('-')
-  #   Release.where('slug LIKE ?', "#{slug}%").take || Release.where('title LIKE ?', "#{name}%").take
-  # end
-
-  # def self.find_or_new_release(name)
-  #   self.find_release(name) || self.new_release(name)
-  # end
-
-  # def self.find_or_create_release(name)
-  #   self.find_release(name) || self.create_release(name)
-  # end
 end
