@@ -8,8 +8,8 @@
 
 admin = Admin.create :email => 'user@example.com', :password => 'password'
 
-ContentSync::load_all_songs
-ContentSync::load_all_releases
+# ContentSync::load_all_songs
+# ContentSync::load_all_releases
 
 # ContentSync::load_releases([
 #   'rough_draft',
