@@ -28,9 +28,17 @@ module ContentSync
   def self.find_remote_release(slug)
     info = self.process_file('releases', slug, 'summary')
     info['tracks'].map!.with_index { |song, index|
+      if song.is_a? Hash
+        title = song.keys.first
+        url = song.values.first
+      else 
+        title = song
+        url = nil
+      end
       {
         position: index,
-        title: song,
+        title: title,
+        audio_url: url,
       }
     }
     info
