@@ -2,8 +2,7 @@ class Track < ApplicationRecord
   belongs_to :release
   belongs_to :song
 
-  delegate  :audio_url,
-            :lyrics,
+  delegate  :lyrics,
             :to => :song, :allow_nil => true
 
   # def title
