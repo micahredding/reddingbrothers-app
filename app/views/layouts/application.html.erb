@@ -7,14 +7,16 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/amplitudejs@3.1.0/dist/amplitude.js"></script>
   </head>
   <body>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
     </main>
+    <%= render partial: 'layouts/player', locals: { release: @release.present? ? @release : nil, songs: @songs.present? ? @songs : [] } %>
   </body>
 </html>

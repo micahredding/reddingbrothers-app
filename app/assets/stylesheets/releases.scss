@@ -20,9 +20,23 @@
     &.disabled .glyphicon {
       color: #CCC;
     }
+    cursor: pointer;
+  }
+  .amplitude-play-pause {
+    .glyphicon-pause {
+      display: none;
+    }
+    &.amplitude-playing {
+      .glyphicon-play {
+        display: none;
+      }
+      .glyphicon-pause {
+        display: block;
+      }
+    }
   }
   .song-title {
-    display: block;
+    display: inline-block;
     padding: 2rem;
   }
 }

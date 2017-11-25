@@ -19,6 +19,14 @@ class Song < ApplicationRecord
     slug_with_fallback('_')
   end
 
+  def audio_url
+    @audio_url ||= "http://dts.podtrac.com/redirect.mp3/http://cdn.brickcaster.com/christiantranshumanist/033_ron_cole_turner.mp3"
+  end
+  
+  def as_json(options={})
+    { url: audio_url, name: title }
+  end
+
   def sync
     info = ContentSync::find_remote_song(file_slug)
     info.select! {|x| Song.attribute_names.index(x)}

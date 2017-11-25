@@ -1,0 +1,61 @@
+<script>
+  Amplitude.setDebug( true );
+  Amplitude.init({
+    "bindings": {
+      37: 'prev',
+      39: 'next',
+      32: 'play_pause'
+    },
+    "songs": <%= raw songs.to_json %>,
+    "playlists": {
+      "main": <%= raw songs.to_a.each_with_index.map { |x,i| i } %>      
+    }
+  });
+</script>
+
+<div id="audio-player" data-turbolinks-permanent>
+  <img amplitude-song-info="cover_art_url" amplitude-main-song-info="true"/>
+  <div id="player-left-bottom">
+    <div class="play-button amplitude-play-pause col-md-1" amplitude-main-play-pause="true" id="play-pause">
+      <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+    </div>
+
+    <div class="current-time col-md-1 text-center">
+      <span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds" amplitude-main-current-seconds="true"></span>
+    </div>
+
+    <input type="range" class="amplitude-song-slider col-md-6 text-center" amplitude-main-song-slider="true"/>
+
+    <div class="duration col-md-1 text-center">
+      <span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds" amplitude-main-duration-seconds="true"></span>
+    </div>
+
+    <div id="control-container">
+      <div id="repeat-container">
+        <div class="amplitude-repeat" id="repeat"></div>
+      </div>
+
+      <div id="central-control-container">
+        <div id="central-controls">
+          <div class="amplitude-prev" id="previous"></div>
+          <div class="amplitude-play-pause" amplitude-main-play-pause="true" id="play-pause"></div>
+          <div class="amplitude-next" id="next"></div>
+        </div>
+      </div>
+
+      <div id="shuffle-container">
+        <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+      </div>
+    </div>
+
+    <div id="meta-container">
+      <span amplitude-song-info="name" amplitude-main-song-info="true" class="song-name"></span>
+
+      <div class="song-artist-album">
+        <span amplitude-song-info="artist" amplitude-main-song-info="true"></span>
+        <span amplitude-song-info="album" amplitude-main-song-info="true"></span>
+      </div>
+    </div>
+  </div>
+</div>

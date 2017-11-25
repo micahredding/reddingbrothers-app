@@ -8,10 +8,14 @@ img {
   margin: 0 auto;
   }
 // override for the 'Home' navigation link
-.navbar-brand {
-  font-size: inherit;
-  }
-
+.navbar-inverse a.navbar-brand {
+  // font-size: inherit;
+  color: #CCC;
+}
+.page-header {
+  border-bottom: none;
+  margin-bottom: 20px;
+}
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
 // to make views framework-neutral
@@ -35,15 +39,25 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
+  background-color: #EEEEEE;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
-  }
+  padding:0;
+}
+.jumbotron {
+  background-color: #FFFFFF;
+  border-radius: 0;
+}
+.jumbotron.jumbotron-fluid {
+  background-color: #222;
+  border-radius: 0;
+  color: white;
+}
 section {
   @extend .row;
   margin-top: 20px;
-  }
+}
 
 // Styles for form views
 // using Bootstrap

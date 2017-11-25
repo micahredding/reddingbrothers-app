@@ -47,17 +47,21 @@
             </div>
 
             <div class="col-lg-12">
-                <% @release.tracks.each do |track| %>
+                <% @release.tracks.each_with_index do |track, index| %>
                     <div class="song-list-item col-lg-12">
-                        <% if track.song.present? %>
-                            <a href="" class="play-button">
+                        <% if track.audio_url.present? %>
+                            <span class="play-button amplitude-play-pause amplitude-paused" amplitude-song-index="<%= index %>">
                                 <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-                            </a>
-                            <%= link_to track.title, track.song, {class: 'song-title'} %>
+                                <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                            </span>
                         <% else %>
                             <a class="play-button disabled">
                                 <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
                             </a>
+                        <% end %>
+                        <% if track.song.present? %>
+                            <%= link_to track.title, track.song, {class: 'song-title'} %>
+                        <% else %>
                             <span class="song-title"><%= track.title %></span>
                         <% end %>
                     </div>

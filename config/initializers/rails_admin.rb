@@ -1,3 +1,6 @@
+require Rails.root.join('lib', 'rails_admin', 'sync.rb')
+RailsAdmin::Config::Actions.register(RailsAdmin::Config::Actions::Sync)
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -33,7 +36,7 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
+    sync
     ## With an audit adapter, you can add:
     # history_index
     # history_show

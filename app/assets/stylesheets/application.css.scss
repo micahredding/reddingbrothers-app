@@ -13,3 +13,54 @@
  *= require_tree .
  *= require_self
  */
+
+#audio-player {
+  .play-button {
+    float: left;
+    padding: 2rem 3rem 2rem 2rem;
+    &.disabled .glyphicon {
+      color: #CCC;
+    }
+    cursor: pointer;
+  }
+  .amplitude-play-pause {
+    .glyphicon-pause {
+      display: none;
+    }
+    &.amplitude-playing {
+      .glyphicon-play {
+        display: none;
+      }
+      .glyphicon-pause {
+        display: block;
+      }
+    }
+  }
+}
+
+#audio-player {
+  font-size: 1.5em; 
+  position: fixed; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  background: white;  
+  #player-left-bottom {
+    padding:0 2rem; 
+    > * {
+      padding:2rem;             
+      min-height: 4rem; 
+    }
+    input[type="range"] {
+      padding:2rem;             
+      min-height: 7rem; 
+      width: auto;
+    }
+    .play-button {
+      padding:2rem;       
+    }
+    #control-container, #meta-container {
+      display: inline-block;
+    }
+  }
+}

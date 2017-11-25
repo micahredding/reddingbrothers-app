@@ -18,11 +18,15 @@ class Release < ApplicationRecord
     slug_with_fallback('_')
   end
 
+  def as_json(options={})
+    songs.to_json
+  end
+
   def sync
     info = ContentSync::find_remote_release(file_slug)
     info['tracks'].each do |track_info|
       track = tracks.find_or_initialize_by(position: track_info[:position])
-      track.song = Song.title_starts_with(track_info[:title]).take if track.song.blank?
+      track.find_your_song(track_info) unless track.song.present?
       track.update_attributes(track_info)
     end
     info.select! {|x| Release.attribute_names.index(x)}

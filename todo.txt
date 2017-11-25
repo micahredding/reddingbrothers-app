@@ -1,0 +1,7 @@
+- Allow mp3s to be specified on tracks 
+- Allow play/pause on audio player
+
+
+- + tracks
+- ++ audio?
+- tweak chord display layout
